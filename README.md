@@ -1,1 +1,3 @@
-# Algorithm_Practice_2marking
+# 알고리즘 공부
+- Hackerrank
+- Programmers

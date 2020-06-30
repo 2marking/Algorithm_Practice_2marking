@@ -1,0 +1,16 @@
+class Solution {
+    fun solution(array: IntArray, commands: Array<IntArray>): IntArray {
+        var answer = IntArray(commands.size)
+        var cnt = 0
+        for (i in commands) {
+            val startIndex = i[0]-1
+            val endIndex = i[1]
+            val findIndex = i[2]-1
+
+            val test:IntArray = array.copyOfRange(startIndex,endIndex).sortedArray()
+            answer.set(cnt,test[findIndex])
+            cnt++
+        }
+        return answer
+    }
+}

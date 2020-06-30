@@ -1,0 +1,56 @@
+import java.io.*
+import java.math.*
+import java.security.*
+import java.text.*
+import java.util.*
+import java.util.concurrent.*
+import java.util.function.*
+import java.util.regex.*
+import java.util.stream.*
+import kotlin.collections.*
+import kotlin.comparisons.*
+import kotlin.io.*
+import kotlin.jvm.*
+import kotlin.jvm.functions.*
+import kotlin.jvm.internal.*
+import kotlin.ranges.*
+import kotlin.sequences.*
+import kotlin.text.*
+
+// Complete the balancedSums function below.
+fun balancedSums(arr: Array<Int>): String {
+    var sumOfResult = 0
+    for (i in 0 until arr.size) sumOfResult+=arr[i]
+
+    var answer = "NO"
+    var leftSum = 0
+    var rightSum = 0
+    if (sumOfResult-arr[0]==0) answer=  "YES"
+    else{
+        leftSum = arr[0]
+        rightSum = sumOfResult - arr[0]
+        for (i in 1 until arr.size){
+            rightSum = rightSum - arr[i]
+            if (rightSum==leftSum){
+                answer = "YES"
+                break
+            }
+            leftSum += arr[i]
+        }
+    }
+    return answer
+}
+
+fun main(args: Array<String>) {
+    val T = readLine()!!.trim().toInt()
+
+    for (TItr in 1..T) {
+        val n = readLine()!!.trim().toInt()
+
+        val arr = readLine()!!.trimEnd().split(" ").map{ it.toInt() }.toTypedArray()
+
+        val result = balancedSums(arr)
+
+        println(result)
+    }
+}

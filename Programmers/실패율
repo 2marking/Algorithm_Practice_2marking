@@ -1,0 +1,31 @@
+실패율
+
+class Solution {
+    fun solution(N: Int, stages: IntArray): IntArray {
+        var answer = intArrayOf()
+        var inputData = stages.toList().sorted()
+        var personCount:Int = inputData.size
+        
+        var hash2:HashMap<Int,Double> = hashMapOf()
+        var currentCount:Int = 0
+
+        for (i in 1..N){
+            personCount = inputData.size
+            for (j in inputData){
+                if (i==j) currentCount++
+            }
+            if (currentCount==0) {
+                hash2.set(i,0.0)
+            } else {
+                hash2.set(i,currentCount.toDouble().div(personCount.toDouble()))
+            }
+            inputData = inputData.filterNot{it.equals(i)}
+            currentCount=0
+        }
+        
+        var sortedByValue = hash2.toList().sortedWith(compareByDescending({it.second})).toMap()
+        answer = sortedByValue.keys.toIntArray()
+        return answer
+    }
+}
+

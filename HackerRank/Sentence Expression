@@ -1,0 +1,34 @@
+class Solution {
+    fun solution(s: String): String {
+        var answer = 0
+        var result:String = ""
+        
+        var currentChar:String = s.substring(0,1)
+        var compareChar:String = ""
+        var currentCharCount:Int = 1
+        
+        for (i in 1 until s.length){
+            compareChar = s.substring(i,i+1)
+            if (currentChar.equals(compareChar)){
+                currentCharCount++
+            } else {
+                if (currentCharCount==1) {
+                    result = result + currentChar
+                    currentChar = compareChar
+                }
+                else {
+                    result = result + currentChar + currentCharCount.toString()
+                    currentChar = compareChar
+                    currentCharCount = 1
+                }
+            }
+            if (i==s.length-1) {
+                if (currentCharCount==1) result+=currentChar
+                else result+=currentChar + currentCharCount.toString()
+
+            }
+        }
+        println(result)
+        return result
+    }
+}

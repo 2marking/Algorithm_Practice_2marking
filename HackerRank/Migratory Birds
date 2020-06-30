@@ -1,0 +1,62 @@
+import java.io.*
+import java.math.*
+import java.security.*
+import java.text.*
+import java.util.*
+import java.util.concurrent.*
+import java.util.function.*
+import java.util.regex.*
+import java.util.stream.*
+import kotlin.collections.*
+import kotlin.comparisons.*
+import kotlin.io.*
+import kotlin.jvm.*
+import kotlin.jvm.functions.*
+import kotlin.jvm.internal.*
+import kotlin.ranges.*
+import kotlin.sequences.*
+import kotlin.text.*
+
+// Complete the migratoryBirds function below.
+fun migratoryBirds(arr: Array<Int>): Int {
+    var sortedArray = arr.sortedArray()
+    var resolveHashMap:HashMap<Int,Int> = hashMapOf()
+
+    for (i in sortedArray){
+        if (resolveHashMap.containsKey(i)){
+            resolveHashMap[i] = resolveHashMap[i]!! +1
+        } else {
+            resolveHashMap[i] = 1
+        }
+    }
+
+    var testAnswer = 100000
+    var answer = 0
+
+    for (i in resolveHashMap.keys){
+        println(i.toString() + " " + resolveHashMap[i])
+        if (resolveHashMap[i]!! > answer){
+            if (resolveHashMap[i]!! == answer){
+                if (i<testAnswer) {
+                    testAnswer = i
+                    answer = resolveHashMap[i]!!
+                }
+            }else {
+                testAnswer = i
+                answer = resolveHashMap[i]!!
+            }
+
+        }
+    }
+    return testAnswer
+}
+
+fun main(args: Array<String>) {
+    val arrCount = readLine()!!.trim().toInt()
+
+    val arr = readLine()!!.trimEnd().split(" ").map{ it.toInt() }.toTypedArray()
+
+    val result = migratoryBirds(arr)
+
+    println(result)
+}

@@ -1,0 +1,58 @@
+import java.io.*
+import java.math.*
+import java.security.*
+import java.text.*
+import java.util.*
+import java.util.concurrent.*
+import java.util.function.*
+import java.util.regex.*
+import java.util.stream.*
+import kotlin.collections.*
+import kotlin.comparisons.*
+import kotlin.io.*
+import kotlin.jvm.*
+import kotlin.jvm.functions.*
+import kotlin.jvm.internal.*
+import kotlin.ranges.*
+import kotlin.sequences.*
+import kotlin.text.*
+
+fun icecreamParlor(m: Int, arr: Array<Int>): Array<Int> {
+    var result:Array<Int> = arrayOf(0,0)
+    var checkBit = false
+    var resultMax = 0
+    for (i in  0 until arr.size-1){
+        for (j in i+1 until arr.size){
+            if (arr[i]+arr[j]==m){
+                result[0]=i+1
+                result[1]=j+1
+                checkBit=true
+                break
+            } else if (arr[i]+arr[j]<m && arr[i]+arr[j]>=resultMax){
+                resultMax=arr[i]+arr[j]
+                result[0]=i+1
+                result[1]=j+1
+            }
+        }
+        if (checkBit) break
+    }
+    return result
+}
+
+fun main(args: Array<String>) {
+    val scan = Scanner(System.`in`)
+
+    val t = scan.nextLine().trim().toInt()
+
+    for (tItr in 1..t) {
+        val m = scan.nextLine().trim().toInt()
+
+        val n = scan.nextLine().trim().toInt()
+
+        val arr = scan.nextLine().split(" ").map{ it.trim().toInt() }.toTypedArray()
+
+        val result = icecreamParlor(m, arr)
+
+        println(result.joinToString(" "))
+    }
+}

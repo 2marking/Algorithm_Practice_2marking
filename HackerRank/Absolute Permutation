@@ -1,0 +1,63 @@
+import java.io.*
+import java.math.*
+import java.security.*
+import java.text.*
+import java.util.*
+import java.util.concurrent.*
+import java.util.function.*
+import java.util.regex.*
+import java.util.stream.*
+import kotlin.collections.*
+import kotlin.comparisons.*
+import kotlin.io.*
+import kotlin.jvm.*
+import kotlin.jvm.functions.*
+import kotlin.jvm.internal.*
+import kotlin.ranges.*
+import kotlin.sequences.*
+import kotlin.text.*
+
+// Complete the absolutePermutation function below.
+fun absolutePermutation(n: Int, k: Int): Array<Int> {
+    var test = Array<Int>(n, { 0 } ) 
+    val defaultErrorValue = Array<Int>(1,{-1})
+    for (i in 0..n-1){
+        for (j in 1..n){
+            var currentCheck=0
+            if (Math.abs(j-(i+1))==k){
+                for (l in 0..i-1){
+                    if (test[l]==j){
+                        currentCheck=1
+                        break
+                    }
+                }
+                if (currentCheck==0){
+                    test[i]=j
+                    break
+                }
+            }
+        }
+        if (test[i]==0) break
+    }
+    for (i in 0..n-1){
+        if (test[i]==0) return defaultErrorValue
+    }
+    return test
+}
+
+fun main(args: Array<String>) {
+    val scan = Scanner(System.`in`)
+
+    val t = scan.nextLine().trim().toInt()
+
+    for (tItr in 1..t) {
+        val nk = scan.nextLine().split(" ")
+
+        val n = nk[0].trim().toInt()
+
+        val k = nk[1].trim().toInt()
+
+        val result = absolutePermutation(n, k)
+        println(result.joinToString(" "))
+    }
+}

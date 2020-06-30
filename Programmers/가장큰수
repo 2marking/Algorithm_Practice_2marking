@@ -1,0 +1,27 @@
+class Solution {
+    fun solution(numbers: IntArray): String {
+
+        val sorted = numbers.sortedWith(Comparator { o1, o2 -> compare1(o1, o2) })
+
+        if (sorted.stream().allMatch { it == 0 }){
+            return "0"
+        }
+
+        return sorted.joinToString("")
+    }
+
+    private fun compare1(o1: Int, o2: Int): Int {
+
+        var s1 = o1.toString()
+        var s2 = o2.toString()
+
+        if (s1.length == s2.length) {
+            return o2 - o1
+        }
+
+        var s1First : Int = "$s1$s2".toInt()
+        var s2First : Int = "$s2$s1".toInt()
+
+        return s2First - s1First
+    }
+}

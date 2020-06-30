@@ -1,0 +1,33 @@
+fun fisrtSolution(moves: Array<String>): Int {
+    var answer = 0
+    for (i in moves){
+        when (i){
+            "U" -> {
+
+            }
+            "D" -> {
+
+            }
+            "L" -> {
+
+            }
+            "R" -> {
+
+            }
+        }
+    }
+    return answer
+}
+fun thirdSolution(command: String, buttons: Array<String>, scores: IntArray): Int {
+    var answer = 0
+    for (i in 0 until command.length){
+        val currentData = command.substring(i,i+1)
+        for (j in 0 until buttons.size){
+            if (buttons[j].substring(0,1).equals())
+        }
+        println(command.substring(i,i+1))
+    }
+    println(command)
+    println(buttons.toString())
+    return answer
+}

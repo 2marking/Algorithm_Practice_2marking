@@ -1,0 +1,53 @@
+import java.io.*
+import java.math.*
+import java.security.*
+import java.text.*
+import java.util.*
+import java.util.concurrent.*
+import java.util.function.*
+import java.util.regex.*
+import java.util.stream.*
+import kotlin.collections.*
+import kotlin.comparisons.*
+import kotlin.io.*
+import kotlin.jvm.*
+import kotlin.jvm.functions.*
+import kotlin.jvm.internal.*
+import kotlin.ranges.*
+import kotlin.sequences.*
+import kotlin.text.*
+
+// Complete the pairs function below.
+fun pairs(k: Int, arr: Array<Int>): Int {
+    var resultCount = 0
+    val sortedArray = arr.sorted()
+    for (i in 0 until sortedArray.size){
+        val currentValue = sortedArray[i]
+        for (j in i+1 until i+k+1){
+            if (j==sortedArray.size) break
+
+            val compareValue = sortedArray[j]
+            val resultValue = compareValue-currentValue
+            
+            if (resultValue>k) break
+            if (resultValue==k) resultCount++
+        }
+    }
+    return resultCount
+}
+
+fun main(args: Array<String>) {
+    val scan = Scanner(System.`in`)
+
+    val nk = scan.nextLine().split(" ")
+
+    val n = nk[0].trim().toInt()
+
+    val k = nk[1].trim().toInt()
+
+    val arr = scan.nextLine().split(" ").map{ it.trim().toInt() }.toTypedArray()
+
+    val result = pairs(k, arr)
+
+    println(result)
+}

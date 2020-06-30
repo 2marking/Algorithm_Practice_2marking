@@ -1,0 +1,111 @@
+import java.io.*
+import java.math.*
+import java.security.*
+import java.text.*
+import java.util.*
+import java.util.concurrent.*
+import java.util.function.*
+import java.util.regex.*
+import java.util.stream.*
+import kotlin.collections.*
+import kotlin.comparisons.*
+import kotlin.io.*
+import kotlin.jvm.*
+import kotlin.jvm.functions.*
+import kotlin.jvm.internal.*
+import kotlin.ranges.*
+import kotlin.sequences.*
+import kotlin.text.*
+
+// Complete the countSort function below.
+fun countSort(arr: Array<Array<String>>): Unit {
+    var hash2:SortedMap<Int, ArrayList<String>> = sortedMapOf()
+
+    for (i in arr.indices){
+        if (i<arr.size.div(2)) arr[i][1] = "-"
+
+        val currentKey = arr[i][0].toInt()
+        val currentValue = arr[i][1]
+        var currentList:ArrayList<String> = arrayListOf()
+
+        if (!hash2.containsKey(currentKey)){
+            hash2[currentKey] = currentList
+        }
+        hash2[currentKey]?.add(currentValue)
+    }
+
+    var checkBit:Boolean = false
+    for (i in hash2.keys) {
+        if (checkBit) print(" " + hash2[i]?.joinToString(" "))
+        else {
+            checkBit = true
+            print(hash2[i]?.joinToString(" ").toString())
+        }
+    }
+}
+
+fun main(args: Array<String>) {
+    val n = readLine()!!.trim().toInt()
+    val arr = Array<Array<String>>(n, { Array<String>(2, { "" }) })
+
+    for (i in 0 until n) {
+        arr[i] = readLine()!!.trimEnd().split(" ").toTypedArray()
+    }
+
+    countSort(arr)
+}
+
+
+//#2
+import java.io.*
+import java.math.*
+import java.security.*
+import java.text.*
+import java.util.*
+import java.util.concurrent.*
+import java.util.function.*
+import java.util.regex.*
+import java.util.stream.*
+import kotlin.collections.*
+import kotlin.comparisons.*
+import kotlin.io.*
+import kotlin.jvm.*
+import kotlin.jvm.functions.*
+import kotlin.jvm.internal.*
+import kotlin.ranges.*
+import kotlin.sequences.*
+import kotlin.text.*
+
+// Complete the countSort function below.
+fun countSort(arr: Array<Array<String>>): Unit {
+    var hash2:HashMap<Int, ArrayList<String>> = hashMapOf()
+
+    for (i in arr.indices){
+        if (i<arr.size.div(2)) arr[i][1] = "-"
+
+        val currentKey = arr[i][0].toInt()
+        val currentValue = arr[i][1]
+        var currentList:ArrayList<String> = arrayListOf()
+
+        if (!hash2.containsKey(currentKey)){
+            hash2[currentKey] = currentList
+        }
+        hash2[currentKey]?.add(currentValue)
+    }
+
+    for (i in hash2.keys) {
+        print(hash2[i]?.joinToString(" ") + " ")
+    }
+}
+
+fun main(args: Array<String>) {
+    val n = readLine()!!.trim().toInt()
+    val arr = Array<Array<String>>(n, { Array<String>(2, { "" }) })
+
+    for (i in 0 until n) {
+        arr[i] = readLine()!!.trimEnd().split(" ").toTypedArray()
+    }
+
+    countSort(arr)
+}
+

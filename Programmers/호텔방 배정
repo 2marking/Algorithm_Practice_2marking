@@ -1,0 +1,23 @@
+class Solution {
+    fun solution(k: Long, room_number: LongArray): LongArray {
+        val answer = LongArray(room_number.size) {0L}
+        var hash2:HashMap<Long, Int> = hashMapOf()
+        var test:Int = 0
+        for (i in room_number){
+            if (!hash2.containsKey(i)) {
+                hash2.set(i, 0)
+                answer[test] = i
+            } else {
+                for (j in i+1..k){
+                    if (!hash2.containsKey(j)){
+                        hash2.set(j,0)
+                        answer[test] = j
+                        break
+                    }
+                }
+            }
+            test++
+        }
+        return answer
+    }
+}

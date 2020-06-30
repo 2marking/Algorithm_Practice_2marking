@@ -1,0 +1,15 @@
+class Solution {
+    fun solution(s: String): String {
+        var answer = ""
+        val arr = s.split(" ")
+        var min = 999999999
+        var max = -999999999
+        for (i in 0 until arr.size){
+            if (arr[i].toInt() > max) max = arr[i].toInt()
+            if (arr[i].toInt() < min) min = arr[i].toInt()
+        }
+        answer = min.toString() + " "+ max.toString()
+        return answer
+ 
+    }
+}

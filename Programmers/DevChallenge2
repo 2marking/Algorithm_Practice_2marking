@@ -1,0 +1,134 @@
+import java.io.*
+import java.math.*
+import java.security.*
+import java.text.*
+import java.util.*
+import java.util.concurrent.*
+import java.util.function.*
+import java.util.regex.*
+import java.util.stream.*
+import kotlin.collections.*
+import kotlin.comparisons.*
+import kotlin.io.*
+import kotlin.jvm.*
+import kotlin.jvm.functions.*
+import kotlin.jvm.internal.*
+import kotlin.ranges.*
+import kotlin.sequences.*
+import kotlin.text.*
+
+// Complete the biggerIsGreater function below.
+
+fun main(args: Array<String>) {
+//    val testprint:Array<IntArray> = arrayOf(intArrayOf(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+//        intArrayOf(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+//        intArrayOf(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+//        intArrayOf(0, 0, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+//        intArrayOf(0, 2, 1, 1, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+//        intArrayOf(0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+//        intArrayOf(0, 0, 2, 1, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0),
+//        intArrayOf(0, 0, 0, 1, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+//        intArrayOf(0, 0, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+//        intArrayOf(0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+//        intArrayOf(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+//        intArrayOf(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+//        intArrayOf(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+//        intArrayOf(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+//        intArrayOf(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0))
+//    omokSolution(testprint)
+//
+//    val testprint1:Array<IntArray> = arrayOf(intArrayOf(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+//        intArrayOf(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+//        intArrayOf(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+//        intArrayOf(0, 0, 2, 1, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0),
+//        intArrayOf(0, 2, 1, 1, 0, 2, 0, 0, 2, 0, 0, 0, 0, 0, 0),
+//        intArrayOf(0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0),
+//        intArrayOf(0, 0, 2, 1, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0),
+//        intArrayOf(0, 0, 0, 1, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+//        intArrayOf(0, 0, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+//        intArrayOf(0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+//        intArrayOf(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+//        intArrayOf(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+//        intArrayOf(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+//        intArrayOf(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+//        intArrayOf(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0))
+//    omokSolution(testprint1)
+//    currentSolution(arrayOf("U", "U", "R", "D", "L", "L", "L", "U", "R", "D", "D", "D", "L", "U", "R", "R", "R", "D", "L", "U"))
+    thirdSolution("<v>AB^CYv^XAZ", arrayOf("v>AB^CYv^XA","<v>A","^XAZ","Yv^XA",">AB^"), intArrayOf(50, 18, 20, 30, 25))
+    fisrtSolution(arrayOf("U", "R", "D", "L", "U", "R", "D", "L"))
+}
+fun fisrtSolution(moves: Array<String>): Int {
+    var answer = 0
+    for (i in moves){
+        when (i){
+            "U" -> {
+                
+            }
+            "D" -> {
+
+            }
+            "L" -> {
+
+            }
+            "R" -> {
+
+            }
+        }
+    }
+    return answer
+}
+fun thirdSolution(command: String, buttons: Array<String>, scores: IntArray): Int {
+    var answer = 0
+    for (i in 0 until command.length){
+        val currentData = command.substring(i,i+1)
+        for (j in 0 until buttons.size){
+            if (buttons[j].substring(0,1).equals())
+        }
+        println(command.substring(i,i+1))
+    }
+    println(command)
+    println(buttons.toString())
+    return answer
+}
+//2
+//fun omokSolution(board: Array<IntArray>): Int {
+//    var answer = 0
+//    for (i in 0 until 10){
+//        for (j in 0 until 10){
+//            if (board[i][j]!=0){
+//                var rightCheck = 1
+//                for (k in 1..4) if (board[i][j]==board[i][j+k]) rightCheck++
+//                if (rightCheck==5) answer=board[i][j]
+//
+//                var downCheck = 1
+//                for (k in 1..4) if (board[i][j]==board[i+k][j]) downCheck++
+//                if (downCheck==5) answer=board[i][j]
+//
+//                var crossCheck = 1
+//                for (k in 1..4) if (board[i][j]==board[i+k][j+k]) crossCheck++
+//                if (crossCheck==5) answer=board[i][j]
+//            }
+//        }
+//    }
+//    if (answer==0){
+//        for (i in 0 until 10){
+//            for (j in 14 downTo 5){
+//                if (board[i][j]!=0){
+//                    var leftCheck = 1
+//                    for (k in 1..4) if (board[i][j]==board[i][j-k]) leftCheck++
+//                    if (leftCheck==5) return board[i][j]
+//
+//                    var downCheck = 1
+//                    for (k in 1..4) if (board[i][j]==board[i+k][j]) downCheck++
+//                    if (downCheck==5) return board[i][j]
+//
+//                    var crossCheck = 1
+//                    for (k in 1..4) if (board[i][j]==board[i+k][j-k]) crossCheck++
+//                    if (crossCheck==5) return board[i][j]
+//                }
+//            }
+//        }
+//    }
+//
+//    return answer
+//}

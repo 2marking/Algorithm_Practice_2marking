@@ -1,4 +1,6 @@
-# 알고리즘 공부
+# Algorithm Practice
+
 - HackerRank
 - Programmers
 - LeetCode
+- Data Structure
